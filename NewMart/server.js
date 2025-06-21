@@ -2,6 +2,13 @@
 const express = require('express');
 session= require('express-session');
 const server = express(); //create server instance
+const db= require('./db'); //import db connection from db.js
+
+//import routers
+const homeRouter = require('./routes/home'); //import home router
+const adminRouter = require('./routes/admin'); //import administration router
+
+
 
 // Middleware to log requests
 function logger(req,res,next){
@@ -31,24 +38,9 @@ server.use(session({
     } 
 }));
 
-//routes
-//handle home route only
-server.get('/', (req, res) => {
-    ctx={
-        title: 'NewMart',
-        message: 'Good to have you here!',
-        notifs: true
-    }
-    res.render('home.ejs',ctx); //render home.ejs template with context
-});
-
-server.get('/about', (req, res) => {
-    ctx={
-        title: 'About NewMart',
-    } 
-
-    res.render('about.ejs',ctx); //render about.ejs template
-});
+//connect routers
+server.use('', homeRouter); //use home router for root path
+server.use('/admin', adminRouter); 
 
 
 
@@ -63,7 +55,6 @@ server.use((err, req, res, next) => {
     //res.status(500).send('Something went wrong!');
     res.send('Error occurred');
 });
-
 
 // Start the server
 const port = 3000;

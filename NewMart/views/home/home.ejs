@@ -1,0 +1,18 @@
+<%- include('../partials/header.ejs') %>
+
+    <% if (notifs==true){ %>
+        <p><%- message %></p>
+    <% }  %>
+
+    <ul>
+        <% products=['milk', 'bread', 'eggs','sugar']; 
+        for (product of products) { %>
+            
+            <li>Product: <%- product %></li>
+        <% } %>
+    </ul>
+
+    <a href="/about">Go to about</a>
+
+
+<%- include('../partials/footer.ejs') %>

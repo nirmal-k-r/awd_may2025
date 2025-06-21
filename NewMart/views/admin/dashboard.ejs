@@ -1,0 +1,91 @@
+<%- include('../partials/header.ejs') %>
+
+<section>
+    <div class="container">
+        <br>
+
+         <div class="alert alert-primary text-center" role="alert">
+            Welcome to the Admin Dashboard
+        </div>
+
+        <br>
+
+        <h3>Admin Dashboard</h3>
+       
+       
+        <p>Here you can manage your store's products, orders and customers.</p>
+
+        <button type="button" class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#createProductModal">Create product</button>
+
+        <!-- Create product Modal -->
+        <div class="modal fade" id="createProductModal" tabindex="-1" aria-labelledby="createProductModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add a new product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">   
+                    <form name="createProductForm" id="createProductForm" method="POST" action="/admin/create-product">
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Apple" name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Desciption</label>
+                            <input type="text" class="form-control" id="description" name="description" placeholder="Green apples">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Price</label>
+                            <input type="number" class="form-control" id="price" name="price" placeholder="15">
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <select id="category" name='category' class="form-select">
+                                <option>Food</option>
+                                <option>Beverages</option>
+                                <option>Electronics</option>
+                                <option>Clothing</option>
+                                <option>Furniture</option>
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="stock" class="form-label">Stock</label>
+                            <input type="number" class="form-control" id="stock" name="stock" placeholder="100">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="sale" name="sale">
+                            <label class="form-check-label" for="sale">On Sale</label>
+                        </div>
+
+                         <div class="modal-footer">
+                            <button type="button" class="btn btn-success">Save changes</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                    
+                </div>
+
+
+               
+                </div>
+            </div>
+        </div>
+            
+
+    </div>
+
+
+</section>
+
+
+
+<%- include('../partials/footer.ejs') %>
